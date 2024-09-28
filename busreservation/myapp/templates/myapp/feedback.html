@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<div class="container my-5">
+    <div class="card bg-info bg-gradient">
+        <div class="card-body">
+            <h2 class="my-3 text-center text-light">Give your Feedback Here...</h2>
+        </div>
+    </div>
+    <br><br>
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7 col-sm-10 col-xs-12">
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <div class="card-title text-center h3 b-0">Feedback</div>
+
+                </div>
+                <div class="card-body">
+                    <div class="contaier-fluid">
+                        <form action="{% url 'feedback' %}" method="post" id="feedback-form">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="username" class="control-label">Username:</label>
+                                <input name='username' id="username" class="form-control" type="text" required>
+                            </div><div class="mb-3">
+                                <label for="email" class="control-label">Email:</label>
+                                <input name='email' class="form-control" type="email" id="email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="comments" class="control-label">Comments:</label>
+                                <textarea name='comments' id="comments" class="form-control" type="text" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-sm btn-primary rounded-0 w-100" form="feedback-form">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
